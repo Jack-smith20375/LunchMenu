@@ -1,0 +1,221 @@
+
+
+	//this is a Global variable
+	static Scanner key = new Scanner(System.in);
+
+////////////////////////////    int Validations    ////////////////////////////
+	public static int validInt0(int min, int max)
+	{
+		int num =0;
+		boolean ok; //by default boolean are false
+		
+		do
+		{
+			ok = true;
+			My.pf("\n\tEnter number: ");
+			
+			if(!key.hasNextInt())
+			{
+				My.pf(String.format("\n\tPlease enter a number between %d - %d.", min, max));
+				key.nextLine();//clear the buffer
+				ok= false;
+			}
+			else
+			{
+				num = key.nextInt();//if it is a number, it will save it to num
+				
+				//but gotta check the range
+				if(num<min || num>max)
+				{
+					ok = false;
+					My.pf(String.format("\n\tError: Number must be between %d - %d. \n\tPlease re-enter: ", min, max));
+					key.nextLine();//clear the buffer
+				}
+			}
+		}while (!ok);
+		
+		return num;
+	}
+	
+	//more industry standard
+	//uses try, catch
+	public static int validInt(int min, int max)
+	{
+		int num = 0;
+		boolean ok;
+		
+		do
+		{
+			try
+			{
+				 ok =true;
+				 My.pf("\n\tEnter number: ");
+				 num = key.nextInt();
+				 key.nextLine();
+				 
+				 if(num<min || num>max)
+				{
+					ok = false;
+					My.pf(String.format("\n\tError: Number must be between %d - %d. \n\tPlease re-enter: ", min, max));
+					key.nextLine();
+				}
+			}
+			
+			catch(InputMismatchException e)//had to import java.util.InputMismatchException
+			{
+				My.pf("\n\tError: Illegal character(s) entered.");
+				key.nextLine();
+				ok=false;
+			}
+		}while(!ok);
+		
+		return num;
+	}
+	
+	//overloading
+	//method has same name but does not take parameters making it a diff signature
+	public static int validInt()
+	{
+		int num = 0;
+		boolean ok;
+		
+		do
+		{
+			try
+			{
+				 ok =true;
+				 My.pf("\n\tEnter number: ");
+				 num = key.nextInt();
+				 key.nextLine();
+				
+			}
+			
+			catch(InputMismatchException e)//had to import java.util.InputMismatchException
+			{
+				My.pf("\n\tError: Illegal character(s) entered.");
+				key.nextLine();
+				ok=false;
+			}
+		}while(!ok);
+		
+		return num;
+	}
+	
+	
+////////////////////////////     double Validations    ////////////////////////////
+	//more industry standard
+	//uses try, catch
+	public static double validDouble(double min, double max)
+	{
+		double num = 0;
+		boolean ok;
+		
+		do
+		{
+			try
+			{
+				 ok =true;
+				 My.pf("\n\tEnter number: ");
+				 num = key.nextDouble();
+				 key.nextLine();
+				 
+				 if(num<min || num>max)
+				{
+					ok = false;
+					My.pf(String.format("\n\tError: Number must be between %8.3f - %8.3f. \n\tPlease re-enter: ", min, max));
+					key.nextLine();
+				}
+			}
+			
+			catch(InputMismatchException e)//had to import java.util.InputMismatchException
+			{
+				My.pf("\n\tError: Illegal character(s) entered.");
+				key.nextLine();
+				ok=false;
+			}
+		}while(!ok);
+		
+		return num;
+	}
+
+	//overloading double version
+	public static double validDouble()
+	{
+		double num = 0.0;
+		boolean ok;
+		
+		do
+		{
+			try
+			{
+				 ok =true;
+				 My.pf("\n\tEnter number: ");
+				 num = key.nextDouble();
+				 key.nextLine();
+				
+			}
+			
+			catch(InputMismatchException e)//had to import java.util.InputMismatchException
+			//InputMismatchException is like a type, so the same as int in int e;
+			{
+				My.pf("\n\tError: Illegal character(s) entered. ");
+				key.nextLine();
+				ok=false;
+			}
+		}while(!ok);
+		
+		return num;
+	}
+	
+	
+///////////////////////////    String     //////////////////////////////////
+	
+//String is for is it a character
+//also look at length of it
+	
+//so always need a check
+	
+	/*
+	 * Still need to finish one
+	 */
+	
+	public static String validStringAllLet(int min, int max)
+	{
+		String s = " ";
+		boolean ok;
+		
+		My.pf("\n\tEnter a word: ");
+		s = key.nextLine();
+		
+		for (int i=0;i<s.length();i++)
+		{
+			if(s.charAt(i)>='a' && s.charAt(i)<='z')
+			{
+				My.pf("\n" + s.charAt(i)+ " is a letter");
+			}
+			else
+			{
+				My.pf("\n" + s.charAt(i)+ " is a nawwww");
+			}
+		}
+		
+		return s;
+	}
+	
+	/*from internet
+	 * public class Alphabet {
+	 * 
+	 * public static void main(String[] args) {
+	 * 
+	 * char c = '*';
+	 * 
+	 * if( (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) System.out.println(c +
+	 * " is an alphabet."); else System.out.println(c + " is not an alphabet."); } }
+	 * 
+	 */
+	/*
+	 * for (int i = 0; i < fruit.length(); i++) { char letter = fruit.charAt(i);
+	 * System.out.println(letter); }
+	 */
+	
+}
