@@ -1,0 +1,36 @@
+package general;
+
+/*
+ * To use these in another program
+ * import general.My;
+ * or
+ * import general.*;
+ * then to call the method
+ * Eg My.pf("Hello world");
+ */
+
+/*
+ * only need to import general into calling program if program using it is in another package
+ * if it is in the same package then it will find it without importing
+ */
+public class My 
+{	
+	
+	public static void pf(String s)
+	{
+		System.out.printf(s);
+		/*remember if using in calling function and need to use varibles
+		 * e.g, in calling function:
+		 * My.pf("%d words", number);
+		 * that isn't possible cos you aren't passing just a string anymore
+		 * so you will have to change it, in calling function, to:
+		 * My.pf(String.format("%d words", number)
+		 */
+	}
+	
+	
+	
+	
+	
+	
+}
